@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>게임방</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@400;500;700;900&family=Rye&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="yang.css">
+<link rel="stylesheet" href="gold.css">
+</head>
+<body data-game="">
+<div class="app">
+  <div class="topbar">
+    <div class="tb-left" id="tb-left"></div>
+    <div class="tb-right">
+      <span id="tb-room"></span>
+      <button id="mute" class="icon-btn" type="button" aria-label="소리 끄기"></button>
+    </div>
+  </div>
+  <div id="conn" class="conn" hidden>서버와 다시 연결하는 중…</div>
+  <main id="view" aria-live="polite"></main>
+</div>
+<script src="sfx.js"></script>
+<script src="yang.js"></script>
+<script src="gold.js"></script>
+<script src="core.js"></script>
+</body>
+</html>
