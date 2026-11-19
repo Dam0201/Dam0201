@@ -92,7 +92,7 @@
       tbRoom.innerHTML = "";
       return;
     }
-    var title = room.game === "gold" ? "골드러쉬" : "양세찬 게임";
+    var title = { gold: "골드러쉬", dalmuti: "달무티", yang: "양세찬 게임" }[room.game] || "";
     tbLeft.innerHTML = '<button type="button" class="tb-back" id="tb-back">' + (leaveArmed ? "정말 나갈까요? 한 번 더" : "← 로비") + '</button><span class="tb-game">' + title + '</span>';
     tbRoom.innerHTML = '<span class="room-pill">방 <b>' + esc(room.code) + '</b><button type="button" id="tb-copy">링크 복사</button></span>';
   }
@@ -142,6 +142,16 @@
     }
     return '<svg viewBox="0 0 160 112" aria-hidden="true"><rect x="24" y="0" width="112" height="112" rx="12" fill="#2a2d33"/>' + cells + '</svg>';
   }
+  function dalArt() {
+    function card(x, rot, num, band, ink) {
+      return '<g transform="rotate(' + rot + ' 80 104)"><rect x="' + x + '" y="20" width="44" height="64" rx="6" fill="#f2e6cc" stroke="#d8c7a3" stroke-width="2"/>'
+        + '<rect x="' + x + '" y="20" width="44" height="8" rx="4" fill="' + band + '"/>'
+        + '<text x="' + (x + 22) + '" y="66" text-anchor="middle" font-family="Cinzel, serif" font-weight="900" font-size="24" fill="' + ink + '">' + num + '</text></g>';
+    }
+    return '<svg viewBox="0 0 160 112" aria-hidden="true">'
+      + card(36, -18, "12", "#8a5a35", "#8a5a35") + card(58, 0, "6", "#2f5d9b", "#2f5d9b") + card(80, 18, "1", "#c8932f", "#8a5f10")
+      + '<path d="M66 10 L66 2 L72 7 L80 0 L88 7 L94 2 L94 10 Z" fill="#d9a441" transform="translate(0 2)"/></svg>';
+  }
   function renderLobby() {
     if (mounted) { if (window.Games[mounted].unmount) window.Games[mounted].unmount(); mounted = null; }
     document.body.setAttribute("data-game", "");
@@ -158,6 +168,9 @@
       + '<article class="tile t-gold"><div class="art">' + goldArt() + '</div><div class="tile-body"><h2>골드러쉬</h2>'
       + '<p>채굴 카드를 뽑아 5×5·3층 광산을 캐고, 돌·구리·은·금으로 가장 부자가 되세요.</p><p class="meta">2~6명 · 카드 · 채굴</p>'
       + '<button type="button" class="lb-create" data-game="gold">방 만들기</button></div></article>'
+      + '<article class="tile t-dal"><div class="art">' + dalArt() + '</div><div class="tile-body"><h2>달무티</h2>'
+      + '<p>손패를 가장 먼저 털면 달무티, 꼴찌는 농노. 인생은 불공평해요. 신분에 따라 세금도 바쳐요.</p><p class="meta">2~8명 · 봇 추가 가능 · 카드</p>'
+      + '<button type="button" class="lb-create" data-game="dalmuti">방 만들기</button></div></article>'
       + '</div>'
       + '<div class="joinbox"><label>친구 방에 참가<input id="lb-code" maxlength="6" placeholder="방 코드 (예: G7K2QP)" autocapitalize="characters" value="' + esc(urlCode || "") + '"></label>'
       + '<button type="button" id="lb-join">참가하기</button></div>'

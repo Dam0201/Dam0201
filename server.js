@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const { WebSocketServer } = require("ws");
 
-const GAMES = { yang: require("./games/yang"), gold: require("./games/gold") };
+const GAMES = { yang: require("./games/yang"), gold: require("./games/gold"), dalmuti: require("./games/dalmuti") };
 const PORT = process.env.PORT || 3000;
 const PUB = path.join(__dirname, "public");
 const MIME = {
