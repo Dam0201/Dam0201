@@ -18,7 +18,8 @@ window.Games.muffin = (function () {
 
   function cardHtml(c, extra, attrs) {
     var d = DEF[c.k] || { name: "?", text: "", type: "action" };
-    return '<button type="button" class="mcard t-' + d.type + (extra || "") + '" ' + (attrs || "") + '>'
+    var fit = (d.name.length > 9 ? " ln" : "") + (d.text.length > 46 ? " lt2" : d.text.length > 34 ? " lt" : "");
+    return '<button type="button" class="mcard t-' + d.type + fit + (extra || "") + '" ' + (attrs || "") + '>'
       + '<span class="mtype">' + TYPE[d.type] + (d.mini ? " · 미니게임" : d.real ? " · 양심" : (d.trig && d.trig !== "manual") ? " · 자동" : "") + '</span>'
       + '<span class="mname">' + esc(d.name) + '</span><span class="mtext">' + esc(d.text) + '</span></button>';
   }
@@ -386,5 +387,5 @@ window.Games.muffin = (function () {
       + '<details class="rules"><summary>마지막 기록</summary><ul>' + (g.log || []).slice().reverse().map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + '</ul></details>';
   }
 
-  return { mount: mount, update: update, unmount: unmount };
+  return { mount: mount, update: update, unmount: unmount, cardHtml: function (c, x) { api = api || { esc: function (s) { return String(s); } }; return cardHtml(c, x); } };
 })();

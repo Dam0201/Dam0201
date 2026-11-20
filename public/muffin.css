@@ -103,6 +103,14 @@
 .muf .mcard.big{width:156px;height:206px;cursor:default;}
 .muf .mcard.big .mname{font-size:20px;}
 .muf .mcard.big .mtext{font-size:12.5px;}
+.muf .mcard.ln .mname{font-size:14.5px;}
+.muf .mcard.lt .mtext{font-size:10.2px;line-height:1.32;}
+.muf .mcard.lt2 .mtext{font-size:9.4px;line-height:1.28;}
+.muf .mcard.small.ln .mname{font-size:13px;}
+.muf .mcard.small.lt .mtext{font-size:9.2px;}
+.muf .mcard.small.lt2 .mtext{font-size:8.6px;}
+.muf .mcard.big.ln .mname{font-size:18px;}
+.muf .mcard.big.lt .mtext,.muf .mcard.big.lt2 .mtext{font-size:11.5px;}
 .muf .mcard.dim{opacity:.55;}
 .muf .mcard.sel{transform:translateY(-10px);box-shadow:0 0 0 3px var(--muffin),0 12px 20px -8px #000c;}
 .muf .mcard.new{animation:m-deal .35s ease;}
@@ -148,8 +156,10 @@
   .muf .mcard{width:104px;height:146px;padding:27px 6px 8px;}
   .muf .mcard .mname{font-size:14px;}
   .muf .mcard .mtext{font-size:9.8px;}
-  .muf .mcard.small{width:92px;height:128px;}
+  .muf .mcard.small{width:94px;height:140px;padding:25px 5px 6px;gap:3px;}
   .muf .mcard.small .mname{font-size:13px;} .muf .mcard.small .mtext{font-size:9px;}
+  .muf .mcard.small.ln .mname{font-size:12px;}
+  .muf .mcard.small.lt2 .mtext{font-size:8.4px;line-height:1.25;}
   .muf .mcard.big{width:130px;height:176px;}
   .muf .handrow{gap:6px;}
   .muf .mp{min-width:96px;padding:6px 9px;}

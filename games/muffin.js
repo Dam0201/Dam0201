@@ -121,7 +121,7 @@ function drawCards(g, u, n) {
     const c = g.deck.pop();
     if (c.k === "banana") {
       g.discard.push(c);
-      log(g, nm(g, u) + "님이 바나나 껍질을 밟았어요! 3장을 버려요.");
+      log(g, nm(g, u) + "님이 지훈이 흘린 바나나를 밟았어요! 3장을 버려요.");
       ev(g, { k: "banana", by: u });
       discardFrom(g, u, 3, null);
       continue;
@@ -262,7 +262,7 @@ function resolvePending(g) {
       const orig = p.by;
       p.by = p.mirror;
       p.targets = p.targets.map((t) => (t === p.mirror ? orig : t));
-      log(g, "거울 반사! 이제 " + nm(g, p.by) + "님이 쓴 걸로 쳐요.");
+      log(g, "거울 셀카 찰칵! 이제 " + nm(g, p.by) + "님이 쓴 걸로 쳐요.");
     }
     resolveBase(g, p);
   }
@@ -303,7 +303,7 @@ function applyAction(g, p) {
       break;
     case "treasureMap": {
       const got = drawCards(g, u, 3);
-      if (got.some((c) => c.k === "treasureBox")) win(g, u, "보물 지도로 보물 상자를 찾았어요!");
+      if (got.some((c) => c.k === "treasureBox")) win(g, u, "잼민의 비상금 상자를 찾았어요!");
       break;
     }
     case "treasureBox": drawCards(g, u, 1); break;
@@ -314,12 +314,12 @@ function applyAction(g, p) {
     case "wantDonut": {
       const holder = others.find((x) => H[x].some((c) => c.k === "myDonut"));
       if (holder) stealFrom(g, holder, u, H[holder].length, null);
-      else log(g, "아무도 '내 도넛'을 안 들고 있었어요.");
+      else log(g, "아무도 '지누의 지갑'을 안 들고 있었어요.");
       break;
     }
     case "ringleader":
       if (g.hostId !== u && P.includes(g.hostId)) stealFrom(g, g.hostId, u, 3, null);
-      else log(g, "주동자가 바로 자기 자신이었어요…");
+      else log(g, "방장이 바로 자기 자신이었어요…");
       break;
     case "blast": discardFrom(g, t, 3, u); break;
     case "wipe": discardFrom(g, t, H[t].length, u); break;
@@ -334,7 +334,7 @@ function applyAction(g, p) {
       checkEmpty(g, u);
       break;
     }
-    case "hotPotato": p.cardDest = t; log(g, nm(g, t) + "님에게 뜨거운 감자가 넘어갔어요!"); break;
+    case "hotPotato": p.cardDest = t; log(g, nm(g, t) + "님에게 업무가 떠넘겨졌어요!"); break;
     case "swapHands": { const a = H[u]; H[u] = H[t]; H[t] = a; log(g, nm(g, u) + "님과 " + nm(g, t) + "님이 손패를 바꿨어요."); checkEmpty(g, u); checkEmpty(g, t); break; }
     case "shuffleAll": {
       const pool = shuffle(P.reduce((acc, x) => acc.concat(H[x].splice(0)), []));
@@ -348,7 +348,7 @@ function applyAction(g, p) {
       const nh = {};
       P.forEach((x) => { nh[x] = H[prevOf(g, x)]; });
       g.hands = nh;
-      log(g, "칙칙폭폭! 모두 앞 사람의 손패를 가져갔어요.");
+      log(g, "박쥐처럼 쓱! 모두 앞 사람 손패로 갈아탔어요.");
       P.forEach((y) => checkEmpty(g, y));
       break;
     }
@@ -360,8 +360,8 @@ function applyAction(g, p) {
     case "skipOne": g.skips[t] = (g.skips[t] || 0) + 1; log(g, nm(g, t) + "님은 다음 차례를 쉬어요."); break;
     case "jump": g.nextOverride = t; log(g, "다음은 " + nm(g, t) + "님부터!"); break;
     case "double": g.turn.actionsLeft += 2; log(g, nm(g, u) + "님은 행동을 2번 더 할 수 있어요."); break;
-    case "banana": p.cardDest = "deck"; log(g, "누군가 카드 더미에 바나나 껍질을 숨겼어요…"); break;
-    case "nothing": log(g, "…정말 아무 일도 일어나지 않았어요."); break;
+    case "banana": p.cardDest = "deck"; log(g, "지훈이 카드 더미 어딘가에 바나나를 흘렸어요…"); break;
+    case "nothing": log(g, "…아무 일도 일어나지 않았어요. 지훈은 다 계획이 있었대요."); break;
     case "fewestWins": case "mostWins":
       g.altWin = { type: p.k === "fewestWins" ? "fewest" : "most", owner: u };
       log(g, nm(g, u) + "님의 다음 차례에 손패가 가장 " + (p.k === "fewestWins" ? "적은" : "많은") + " 사람이 승리해요!");
