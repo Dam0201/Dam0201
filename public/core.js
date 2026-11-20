@@ -92,7 +92,7 @@
       tbRoom.innerHTML = "";
       return;
     }
-    var title = { gold: "골드러쉬", dalmuti: "달무티", yang: "양세찬 게임" }[room.game] || "";
+    var title = { gold: "골드러쉬", dalmuti: "달무티", yang: "양세찬 게임", muffin: "머핀타임" }[room.game] || "";
     tbLeft.innerHTML = '<button type="button" class="tb-back" id="tb-back">' + (leaveArmed ? "정말 나갈까요? 한 번 더" : "← 로비") + '</button><span class="tb-game">' + title + '</span>';
     tbRoom.innerHTML = '<span class="room-pill">방 <b>' + esc(room.code) + '</b><button type="button" id="tb-copy">링크 복사</button></span>';
   }
@@ -152,6 +152,16 @@
       + card(36, -18, "12", "#8a5a35", "#8a5a35") + card(58, 0, "6", "#2f5d9b", "#2f5d9b") + card(80, 18, "1", "#c8932f", "#8a5f10")
       + '<path d="M66 10 L66 2 L72 7 L80 0 L88 7 L94 2 L94 10 Z" fill="#d9a441" transform="translate(0 2)"/></svg>';
   }
+  function mufArt() {
+    function card(x, rot, band, tint) {
+      return '<g transform="rotate(' + rot + ' 80 100)"><rect x="' + x + '" y="34" width="40" height="56" rx="6" fill="' + tint + '"/><rect x="' + x + '" y="34" width="40" height="10" rx="5" fill="' + band + '"/></g>';
+    }
+    return '<svg viewBox="0 0 160 112" aria-hidden="true">'
+      + card(34, -20, "#e5484d", "#fdecec") + card(60, 0, "#49b4e3", "#e8f6fd") + card(86, 20, "#6cc04a", "#eef9e8")
+      + '<path d="M60 40 L100 40 L95 64 L65 64 Z" fill="#f6efe2" stroke="#e8dcc6" stroke-width="2" transform="translate(0 30)"/>'
+      + '<ellipse cx="80" cy="66" rx="26" ry="18" fill="#f2a65a"/>'
+      + '<circle cx="71" cy="62" r="3.5" fill="#6b5bd0"/><circle cx="86" cy="58" r="3" fill="#6b5bd0"/><circle cx="84" cy="70" r="3.5" fill="#6b5bd0"/></svg>';
+  }
   function renderLobby() {
     if (mounted) { if (window.Games[mounted].unmount) window.Games[mounted].unmount(); mounted = null; }
     document.body.setAttribute("data-game", "");
@@ -171,6 +181,9 @@
       + '<article class="tile t-dal"><div class="art">' + dalArt() + '</div><div class="tile-body"><h2>달무티</h2>'
       + '<p>손패를 가장 먼저 털면 달무티, 꼴찌는 농노. 인생은 불공평해요. 신분에 따라 세금도 바쳐요.</p><p class="meta">2~8명 · 봇 추가 가능 · 카드</p>'
       + '<button type="button" class="lb-create" data-game="dalmuti">방 만들기</button></div></article>'
+      + '<article class="tile t-muf"><div class="art">' + mufArt() + '</div><div class="tile-body"><h2>머핀타임</h2>'
+      + '<p>차례를 시작할 때 손패가 딱 10장이면 승리! 함정·행동·카운터로 서로 방해하는, 끝날 듯 안 끝나는 카드 게임.</p><p class="meta">2~8명 · 음성 채팅 추천 · 카드</p>'
+      + '<button type="button" class="lb-create" data-game="muffin">방 만들기</button></div></article>'
       + '</div>'
       + '<div class="joinbox"><label>친구 방에 참가<input id="lb-code" maxlength="6" placeholder="방 코드 (예: G7K2QP)" autocapitalize="characters" value="' + esc(urlCode || "") + '"></label>'
       + '<button type="button" id="lb-join">참가하기</button></div>'
