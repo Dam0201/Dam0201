@@ -25,7 +25,8 @@ window.Games.muffin = (function () {
     var fit = (d.name.length > 9 ? " ln" : "") + (d.text.length > 46 ? " lt2" : d.text.length > 34 ? " lt" : "");
     return '<button type="button" class="mcard t-' + d.type + fit + (extra || "") + '" ' + (attrs || "") + '>'
       + '<span class="mtype">' + TYPE[d.type] + (d.mini ? " · 미니게임" : d.real ? " · 양심" : (d.trig && d.trig !== "manual") ? " · 자동" : "") + '</span>'
-      + '<span class="mav" style="background-image:url(avatars/' + (AVATAR[d.who] || "muffin.svg") + ')" aria-hidden="true"></span>'
+      + (window.MuffinArt ? '<span class="mart" aria-hidden="true">' + window.MuffinArt.render(c.k) + '</span>'
+        : '<span class="mav" style="background-image:url(avatars/' + (AVATAR[d.who] || "muffin.svg") + ')" aria-hidden="true"></span>')
       + '<span class="mname">' + esc(d.name) + '</span><span class="mtext">' + esc(d.text) + '</span></button>';
   }
 
