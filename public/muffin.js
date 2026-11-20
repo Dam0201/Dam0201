@@ -4,6 +4,10 @@ window.Games.muffin = (function () {
   var DEF = {};
   (window.MUFFIN_CARDS || []).forEach(function (c) { DEF[c.k] = c; });
   var TYPE = { action: "행동", trap: "함정", counter: "카운터" };
+  var AVATAR = {
+    jihun: "jihun.png", isang: "isang.png", jaedam: "jaedam.png", jaem: "jaem.png", bat: "bat.png",
+    coco: "coco.svg", colin: "colin.svg", prss: "prss.svg"
+  };
 
   var root, api, room, g, $ = {}, prevSeq = null, offset = 0, ticker = null, knownIds = {}, prevTurn = null, reactBeeped = false;
   var ui = { sel: null, mode: null };
@@ -21,6 +25,7 @@ window.Games.muffin = (function () {
     var fit = (d.name.length > 9 ? " ln" : "") + (d.text.length > 46 ? " lt2" : d.text.length > 34 ? " lt" : "");
     return '<button type="button" class="mcard t-' + d.type + fit + (extra || "") + '" ' + (attrs || "") + '>'
       + '<span class="mtype">' + TYPE[d.type] + (d.mini ? " · 미니게임" : d.real ? " · 양심" : (d.trig && d.trig !== "manual") ? " · 자동" : "") + '</span>'
+      + '<span class="mav" style="background-image:url(avatars/' + (AVATAR[d.who] || "muffin.svg") + ')" aria-hidden="true"></span>'
       + '<span class="mname">' + esc(d.name) + '</span><span class="mtext">' + esc(d.text) + '</span></button>';
   }
 

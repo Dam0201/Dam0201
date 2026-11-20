@@ -88,19 +88,22 @@
 .muf .m-log li.fresh{color:var(--ink);font-weight:700;}
 
 /* cards */
-.muf .mcard{appearance:none;font-family:inherit;width:128px;height:170px;flex:none;border-radius:13px;border:none;background:var(--tint);color:var(--card-ink);position:relative;padding:30px 9px 10px;
+.muf .mcard{appearance:none;font-family:inherit;width:128px;height:214px;flex:none;border-radius:13px;border:none;background:var(--tint);color:var(--card-ink);position:relative;padding:30px 9px 10px;
   display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;cursor:pointer;box-shadow:0 4px 0 var(--edge),0 10px 18px -10px #000c;transition:transform .14s,box-shadow .14s;overflow:hidden;}
 .muf .mcard::before{content:"";position:absolute;left:0;right:0;top:0;height:24px;background:var(--band);}
 .muf .mcard .mtype{position:absolute;top:4px;left:0;right:0;font-size:10.5px;font-weight:900;color:#fff;letter-spacing:.04em;}
+.muf .mcard .mav{width:42px;height:42px;flex:none;border-radius:50%;background-color:#fff;background-size:cover;background-position:center;border:2px solid #fff;box-shadow:0 2px 6px #2a234040;}
 .muf .mcard .mname{font-family:'Jua',sans-serif;font-size:16.5px;line-height:1.15;word-break:keep-all;}
 .muf .mcard .mtext{font-size:11px;line-height:1.38;word-break:keep-all;opacity:.88;}
 .muf .mcard.t-action{--band:var(--act);--tint:var(--act-t);--edge:#9fd3ea;}
 .muf .mcard.t-trap{--band:var(--trap);--tint:var(--trap-t);--edge:#efb0b2;}
 .muf .mcard.t-counter{--band:var(--ctr);--tint:var(--ctr-t);--edge:#b6e09f;}
-.muf .mcard.small{width:108px;height:146px;padding:27px 7px 8px;gap:4px;}
+.muf .mcard.small{width:108px;height:184px;padding:27px 7px 8px;gap:4px;}
+.muf .mcard.small .mav{width:34px;height:34px;}
 .muf .mcard.small .mname{font-size:14.5px;}
 .muf .mcard.small .mtext{font-size:10px;}
-.muf .mcard.big{width:156px;height:206px;cursor:default;}
+.muf .mcard.big{width:156px;height:262px;cursor:default;}
+.muf .mcard.big .mav{width:56px;height:56px;}
 .muf .mcard.big .mname{font-size:20px;}
 .muf .mcard.big .mtext{font-size:12.5px;}
 .muf .mcard.ln .mname{font-size:14.5px;}
@@ -153,14 +156,17 @@
 .muf .m-end .plist{text-align:left;}
 
 @media (max-width:600px){
-  .muf .mcard{width:104px;height:146px;padding:27px 6px 8px;}
+  .muf .mcard{width:104px;height:184px;padding:27px 6px 8px;}
+  .muf .mcard .mav{width:34px;height:34px;}
+  .muf .mcard.small .mav{width:30px;height:30px;}
+  .muf .mcard.big .mav{width:46px;height:46px;}
   .muf .mcard .mname{font-size:14px;}
   .muf .mcard .mtext{font-size:9.8px;}
-  .muf .mcard.small{width:94px;height:140px;padding:25px 5px 6px;gap:3px;}
+  .muf .mcard.small{width:94px;height:174px;padding:25px 5px 6px;gap:3px;}
   .muf .mcard.small .mname{font-size:13px;} .muf .mcard.small .mtext{font-size:9px;}
   .muf .mcard.small.ln .mname{font-size:12px;}
   .muf .mcard.small.lt2 .mtext{font-size:8.4px;line-height:1.25;}
-  .muf .mcard.big{width:130px;height:176px;}
+  .muf .mcard.big{width:130px;height:226px;}
   .muf .handrow{gap:6px;}
   .muf .mp{min-width:96px;padding:6px 9px;}
 }

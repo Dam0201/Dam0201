@@ -310,6 +310,7 @@ function applyAction(g, p) {
     case "pick1": stealFrom(g, t, u, 1, null); break;
     case "pick2": stealFrom(g, t, u, 2, null); break;
     case "collect": others.forEach((x) => stealFrom(g, x, u, 1, null)); break;
+    case "isangHand": p.targets.filter((x) => x !== u).forEach((x) => stealFrom(g, x, u, 1, null)); break;
     case "xray": g.sub = { type: "pick", by: u, src: "hand", from: t, until: Date.now() + SUB_MS }; break;
     case "wantDonut": {
       const holder = others.find((x) => H[x].some((c) => c.k === "myDonut"));
@@ -334,7 +335,7 @@ function applyAction(g, p) {
       checkEmpty(g, u);
       break;
     }
-    case "hotPotato": p.cardDest = t; log(g, nm(g, t) + "님에게 업무가 떠넘겨졌어요!"); break;
+    case "hotPotato": p.cardDest = t; log(g, nm(g, t) + "님에게 폭탄이 넘어갔어요!"); break;
     case "swapHands": { const a = H[u]; H[u] = H[t]; H[t] = a; log(g, nm(g, u) + "님과 " + nm(g, t) + "님이 손패를 바꿨어요."); checkEmpty(g, u); checkEmpty(g, t); break; }
     case "shuffleAll": {
       const pool = shuffle(P.reduce((acc, x) => acc.concat(H[x].splice(0)), []));
