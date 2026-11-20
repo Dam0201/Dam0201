@@ -5,8 +5,8 @@ window.Games.muffin = (function () {
   (window.MUFFIN_CARDS || []).forEach(function (c) { DEF[c.k] = c; });
   var TYPE = { action: "행동", trap: "함정", counter: "카운터" };
   var AVATAR = {
-    jihun: "jihun.png", isang: "isang.png", jaedam: "jaedam.png", jaem: "jaem.png", bat: "bat.png",
-    coco: "coco.svg", colin: "colin.svg", prss: "prss.svg"
+    jihun: "jihun.png", isang: "isang.png", jaedam: "jaedam.png", jinu: "jinu.png", colin: "colin.png",
+    coco: "coco.svg", prss: "prss.svg"
   };
 
   var root, api, room, g, $ = {}, prevSeq = null, offset = 0, ticker = null, knownIds = {}, prevTurn = null, reactBeeped = false;
@@ -103,7 +103,7 @@ window.Games.muffin = (function () {
       + '<li>내 차례엔 먼저 <b class="r">함정</b> 1장을 몰래 설치할 수 있어요. 그다음 <b>카드 1장 뽑기</b>나 <b class="b">행동</b> 카드 1장 쓰기 중 하나를 해요.</li>'
       + '<li><b class="gr">카운터</b>는 누군가 카드를 냈을 때 내 차례가 아니어도 써요. 받아친 카드를 또 받아칠 수도 있어요. 미니게임은 못 막아요.</li>'
       + '<li>"누가 웃으면" 같은 함정은 상황이 생기면 주인이 직접 <b>발동!</b>을 누르고 걸린 사람을 골라요. 양심껏!</li>'
-      + '<li>카드 이름과 문구는 이 게임방에서 새로 지었어요.</li>'
+      + '<li>카드 이름은 원작 카드를 우리 친구들 버전으로 비튼 거예요. 카드 도감에서 전부 볼 수 있어요.</li>'
       + '</ul></details>';
   }
 
